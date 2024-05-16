@@ -1,0 +1,11 @@
+#!/bin/sh
+
+################################################################################
+# Specify the filepath of the verilog library file of standard cell
+################################################################################
+VERILOG_LIB=/afs/ee.ust.hk/sun4x_56/usr/eelocal/tsmc_icdc/tsmc180/tsmc180_MS_RF_G/SC/tcb018g3d3/Rev280a/Front_End/verilog/tcb018g3d3_280a/tcb018g3d3.v
+
+SDF_LOCATION="../layout/results/design_top.sdf"
+
+vcs -full64 ../layout/results/design_top.routed.v ../tb/top_tb.v +v2k -debug_all -top top_tb \
+  -timescale=1ns/1ps +neg_tchk +warn=noTFIPC,noSDFCOM_UHICD -v $VERILOG_LIB +define+SDF_FILE=\"$SDF_LOCATION\"

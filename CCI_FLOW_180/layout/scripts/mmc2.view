@@ -1,0 +1,40 @@
+# Version:1.0 MMMC View Definition File
+# Do Not Remove Above Line
+
+
+create_library_set -name wc \
+                   -timing \
+		[list \
+        /afs/ee.ust.hk/sun4x_56/usr/eelocal/tsmc_icdc/tsmc180/tsmc180_MS_RF_G/SC/tcb018g3d3/Rev280a/Front_End/timing_power_noise/CCS/tcb018g3d3_280a/tcb018g3d3wc_ccs.lib]
+
+
+create_rc_corner -name CWORST_T \
+                 -preRoute_res {1.3 } \
+		 -preRoute_cap {1.3 } \
+		 -preRoute_clkres {0.0} \
+		 -preRoute_clkcap {0.0} \
+		 -postRoute_res {1.3 1.3 1.3} \
+		 -postRoute_cap {1.3 1.3 1.3} \
+		 -postRoute_xcap {1.3 1.3 1.3} \
+		 -T 125 \
+		 -cap_table {/afs/ee.ust.hk/sun4x_56/usr/eelocal/tsmc_icdc/tsmc180/tsmc180_MS_RF_G/SC/tcb018g3d3/Rev280a/Back_End/lef/tcb018g3d3_280a/techfiles/captable/t018lo_1p6m_typical.captable}
+
+
+create_delay_corner -name wc_CWORST_T \
+                    -library_set {wc} \
+		    -rc_corner {CWORST_T}
+
+
+
+create_constraint_mode -name SDC \
+                       -sdc_files [list ../syn/results/design_top.sdc]
+
+
+create_analysis_view -name wc -constraint_mode {SDC} -delay_corner {wc_CWORST_T}
+
+set_analysis_view -setup [list wc] -hold [list wc]
+# set_analysis_view -setup [list SetupMax] -hold [list HoldMin]
+
+create_op_cond -name wc -library_file {/afs/ee.ust.hk/sun4x_56/usr/eelocal/tsmc_icdc/tsmc180/tsmc180_MS_RF_G/SC/tcb018g3d3/Rev280a/Front_End/timing_power_noise/CCS/tcb018g3d3_280a/tcb018g3d3wc_ccs.lib} -P {1.0} -V {2.97} -T {125}
+
+

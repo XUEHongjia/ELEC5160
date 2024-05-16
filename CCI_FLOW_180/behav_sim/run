@@ -1,0 +1,4 @@
+#!/bin/sh
+
+vcs -full64 ../rtl/tpu_top.v ../rtl/dfu.v ../rtl/wfu.v ../rtl/pe.v ../rtl/systolic_array.v ../tb/top_tb.v +v2k -debug_all -top top_tb \
+  -timescale=1ns/1ps

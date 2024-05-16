@@ -1,0 +1,3 @@
+#!/bin/sh
+
+innovus -init scripts/top.tcl -win
