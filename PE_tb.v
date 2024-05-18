@@ -55,6 +55,9 @@ PE_rcf uut ( .clk( clk ), .rst_n( rst_n ), .mode( mode ), .mult0( mult0 ), .mult
 
     //============== (7) ==================
     //simulation finish
-    
+always begin
+   #1200;
+   &finish;
+end
     
 endmodule
