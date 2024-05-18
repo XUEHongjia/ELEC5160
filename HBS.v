@@ -33,7 +33,7 @@ end
 
 endmodule
 
-module PE_rcf
+module HBS
 #(
 parameter BITWIDTH_MIN = 4,
 parameter NUM = 4
