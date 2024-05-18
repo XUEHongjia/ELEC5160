@@ -16,8 +16,8 @@ wire unsigned [ 16 - 1 : 0 ] c_concat;
 assign c_concat = { c11[8-1:0], c00[8-1:0] };
 wire unsigned [ 12 - 1 : 0 ] c01_left;
 wire unsigned [ 12 - 1 : 0 ] c10_left;
-assign c01_left = { c01[4-1:0], 4'h0 };
-assign c10_left = { c10[4-1:0], 4'h0 };
+    assign c01_left = { c01[8-1:0], 4'h0 };
+    assign c10_left = { c10[8-1:0], 4'h0 };
 
 always@( posedge clk or negedge rst_n ) begin
 
