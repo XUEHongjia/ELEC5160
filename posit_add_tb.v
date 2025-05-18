@@ -65,7 +65,7 @@ reg [15:0] i;
 	
  always #5 clk=~clk;
 
-  always @(posedge clk) begin			
+  always @(negedge clk) begin			
  	in1=data1[i];	
 	in2=data2[i];
 	if(i==16'd15)
